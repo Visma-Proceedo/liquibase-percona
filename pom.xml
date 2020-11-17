@@ -38,6 +38,9 @@
         <liquibase.version>3.10.1</liquibase.version>
         <mysql.version>8.0.20</mysql.version>
         <percona.toolkit.version>3.2.0</percona.toolkit.version>
+        <release.repository.url>http://nexus.proceedo.net/repository/maven-releases</release.repository.url>
+        <snapshot.repository.url>http://nexus.proceedo.net/repository/maven-snapshots</snapshot.repository.url>
+
 
         <config_host>127.0.0.1</config_host>
         <!--
@@ -193,17 +196,53 @@
     </build>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
         <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>proceedo</id>
+            <name>Proceedo Nexus</name>
+            <layout>default</layout>
+            <url>${release.repository.url}</url>
         </repository>
+
+        <snapshotRepository>
+            <id>proceedo</id>
+            <name>Proceedo Nexus</name>
+            <layout>default</layout>
+            <url>${snapshot.repository.url}</url>
+        </snapshotRepository>
+
+        <site>
+            <id>maven-site</id>
+            <name>Proceedo Maven Site</name>
+            <url>scp://maven-site.proceedodev.net/www/maven/site/</url>
+        </site>
     </distributionManagement>
+
+
+    <repositories>
+        <repository>
+            <id>proceedo</id>
+            <name>Proceedo Nexus</name>
+            <layout>default</layout>
+            <url>http://nexus.proceedo.net/repository/maven-public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>vismapublic</id>
+            <name>Visma Public Repository</name>
+            <url>http://10.3.3.148:8081/nexus/content/repositories/public/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>proceedo</id>
+            <name>Proceedo Nexus</name>
+            <layout>default</layout>
+            <url>http://nexus.proceedo.net/repository/maven-public</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <profiles>
         <profile>
