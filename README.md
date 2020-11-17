@@ -6,6 +6,8 @@ Extension to support the tool `pt-online-schema-change` from [Percona Toolkit](h
 This extension replaces a couple of the default changes to use `pt-online-schema-change` instead of SQL.
 This allows to perform a non-locking database upgrade.
 
+This specific build is targeted for MariaDB support and installing on Proceedo internal repos.
+
 
 ## Table Of Contents
 
